@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import "./styles.css";
+import styles from "./home.module.css";
 import Link from "next/link";
 
 export default function Home() {
@@ -21,17 +21,18 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-     {listaProduto.map((produto)=> 
-          <div key={produto.id}>
+    <main className={styles.main}>
+     {listaProduto.map((produto)=>
+          <div className={styles.card} key={produto.id}>
             <center><h3>{produto.titulo}</h3></center>
+            <Image 
+        width= {300}
+        height={300}
+        src={produto.imagem}/>
             <p><strong>R$ {produto.preco}</strong></p>
             <center><p><strong>Gênero: </strong>{produto.genero}</p></center>
             <center><p><strong>Tamanho: </strong>{produto.tamanho}</p></center>
-            <Image 
-        width= {150}
-        height={150}
-        src={produto.imagem}/>
+            
         <br/>
         
           </div>
