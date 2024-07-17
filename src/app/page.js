@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./home.module.css";
 import Link from "next/link";
+import Loading from "./componentes/Loading";
 
 export default function Home() {
 
@@ -16,10 +17,14 @@ export default function Home() {
       const data = await response.json();
 
       setListaProduto(data);
+      
     };
     getProduto();
   }, []);
 
+  if(listaProduto[0] == null){
+    return <center><Loading/></center>
+  }
   return (
     <>
     <div>
