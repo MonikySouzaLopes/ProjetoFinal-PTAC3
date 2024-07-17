@@ -38,10 +38,9 @@ export default function Home() {
         src={produto.imagem}/>
             <p><strong>R$ {produto.preco}</strong></p>
             <center><p><strong>Gênero: </strong>{produto.genero}</p></center>
-            <center><p><strong>Tamanho: </strong>{produto.tamanho}</p></center>
-            
+            <center><p><strong>Tamanho: </strong>{produto.tamanho}</p></center> 
         <br/>
-        
+        <Link href={"/produto/" + produto.id}>Ver mais!</Link>
           </div>
    )}
     </main>
