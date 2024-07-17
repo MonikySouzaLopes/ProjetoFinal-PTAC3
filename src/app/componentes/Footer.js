@@ -6,7 +6,7 @@ export default function Footer(){
         <br/>
           <footer className={styles.footer}>
           <div className={styles.container}>
-            <p>&copy; 2024 Here I Am. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Urban Believers. Todos os direitos reservados.</p>
         </div>
           </footer>
           </>
