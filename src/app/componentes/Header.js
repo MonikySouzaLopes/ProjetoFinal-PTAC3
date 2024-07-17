@@ -12,12 +12,12 @@ export default function Header(){
         </div>
         <div className={styles.navbar_menu} >
            <Image 
-           width= {40}
-           height={40}
-           src="https://img.icons8.com/ios/50/shopping-cart--v1.png" 
+           width= {60}
+           height={60}
+           src="/Sacola.png" 
             />
-           
         </div>
     </nav>
+    
     );
 };

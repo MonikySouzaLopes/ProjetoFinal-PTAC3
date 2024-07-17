@@ -21,6 +21,13 @@ export default function Home() {
   }, []);
 
   return (
+    <>
+    <div>
+        <Image width= {1310}
+              height={300} 
+              src="/Banner.png"/>
+    </div>
+    <br/>
     <main className={styles.main}>
      {listaProduto.map((produto)=>
           <div className={styles.card} key={produto.id}>
@@ -38,5 +45,6 @@ export default function Home() {
           </div>
    )}
     </main>
+    </>
   );
 }
