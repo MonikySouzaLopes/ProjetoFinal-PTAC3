@@ -18,7 +18,8 @@ export default function Home() {
     const getProduto = async() =>{
       try{const response = await fetch("http://localhost:3000/api");
       const data = await response.json();
-
+      
+      setListaCompleta(data);
       setListaProduto(data);
       }catch{
         setErroNoServidor(true);
@@ -26,12 +27,23 @@ export default function Home() {
     };
     getProduto();
   }, []);
+//função para ordenar os produtos em ordem alfabética
+const ordernarAZ = () =>{
+
+  //essa const ta fazendo uma cópia da lista de produtos, e ela ta usando usando o metódo sort para ordenar
+  const newList = [...listaProduto].sort( (a, b) =>
+    //localeCompare é um método de string que compara duas strings em ordem alfabética, de acordo com as regras de localização.  
+    a.titulo.localeCompare(b.titulo)
+  );
+  //depois o estado de listProduct vai ser alterado, afim de receber o que está armazenado dentro de newList
+  setListaProduto(newList);
+}
 
   if(erroNoServidor == true){
     return <ErronoFetch/>
   }
 
-  if(listaProduto[0] == null){
+  if(listaCompleta[0] == null){
     return <center><Loading/></center>
   }
   return (
@@ -42,6 +54,8 @@ export default function Home() {
               src="/Banner.png"/>
     </div>
     <br/>
+    <p>Filtros: </p>
+    <button onClick={ordernarAZ}>AZ</button>
     <main className={styles.main}>
      {listaProduto.map((produto)=>
           <div className={styles.card} key={produto.id}>
