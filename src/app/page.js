@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./home.module.css";
 import Link from "next/link";
 import Loading from "./componentes/Loading";
+import ErronoFetch from "./componentes/ErronoFetch";
 
 export default function Home() {
 
@@ -11,16 +12,24 @@ export default function Home() {
 
   const [listaCompleta, setListaCompleta] = useState([]);
 
+  const [erroNoServidor, setErroNoServidor] = useState(false)
+
   useEffect( ()=> {
     const getProduto = async() =>{
-      const response = await fetch("http://localhost:3000/api");
+      try{const response = await fetch("http://localhost:3000/api");
       const data = await response.json();
 
       setListaProduto(data);
-      
+      }catch{
+        setErroNoServidor(true);
+      } 
     };
     getProduto();
   }, []);
+
+  if(erroNoServidor == true){
+    return <ErronoFetch/>
+  }
 
   if(listaProduto[0] == null){
     return <center><Loading/></center>
