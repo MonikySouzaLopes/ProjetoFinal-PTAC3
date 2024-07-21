@@ -29,16 +29,11 @@ export default function Home() {
   }, []);
 
 const ordenarAZ = () =>{
-
-
   const newList = [...listaProduto].sort( (a, b) =>
-   
     a.titulo.localeCompare(b.titulo)
   );
- 
   setListaProduto(newList);
 }
-
 
 const ordenarZA = () =>{
   let newList = [...listaProduto].sort( (a, b) =>
@@ -47,6 +42,23 @@ const ordenarZA = () =>{
   newList = newList.reverse();
   setListaProduto(newList);
 }
+
+const ordenarPrecoMenorAoMaior = () =>{
+  let newList = [...listaProduto].sort( (a, b) =>
+      a.preco - b.preco
+  );
+  setListaProduto(newList);
+}
+//função para ordenar os preços dos produtos do maior pro menor 
+const ordenarPrecoMaiorAoMenor = () =>{
+  let newList = [...listaProduto].sort( (a, b) =>
+      a.preco - b.preco
+  );
+  newList = newList.reverse();
+  setListaProduto(newList);
+}
+
+
   if(erroNoServidor == true){
     return <ErronoFetch/>
   }
@@ -65,6 +77,8 @@ const ordenarZA = () =>{
     <p>Filtros: </p>
     <button onClick={ordenarAZ}>AZ</button>
     <button onClick={ordenarZA}>ZA</button>
+    <button onClick={ordenarPrecoMenorAoMaior}>Menor ao maior</button>
+    <button onClick={ordenarPrecoMaiorAoMenor}>Maior ao menor</button>
     <main className={styles.main}>
      {listaProduto.map((produto)=>
           <div className={styles.card} key={produto.id}>
