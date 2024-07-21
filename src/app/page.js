@@ -12,7 +12,9 @@ export default function Home() {
 
   const [listaCompleta, setListaCompleta] = useState([]);
 
-  const [erroNoServidor, setErroNoServidor] = useState(false)
+  const [erroNoServidor, setErroNoServidor] = useState(false);
+
+  const [pesquisa, setPesquisa] = useState("");
 
   useEffect( ()=> {
     const getProduto = async() =>{
@@ -49,7 +51,7 @@ const ordenarPrecoMenorAoMaior = () =>{
   );
   setListaProduto(newList);
 }
-//função para ordenar os preços dos produtos do maior pro menor 
+
 const ordenarPrecoMaiorAoMenor = () =>{
   let newList = [...listaProduto].sort( (a, b) =>
       a.preco - b.preco
@@ -58,6 +60,19 @@ const ordenarPrecoMaiorAoMenor = () =>{
   setListaProduto(newList);
 }
 
+const pesquisaTitulo = (text) =>{
+  setPesquisa(text);
+  
+  if(text.trim() == ""){
+    
+      setListaProduto(listaCompleta);
+      return
+  }
+ 
+  const newList = listaProduto.filter((product) => 
+    product.titulo.toUpperCase().trim().includes(pesquisa.toUpperCase().trim()));
+   setListaProduto(newList);
+}
 
   if(erroNoServidor == true){
     return <ErronoFetch/>
@@ -79,6 +94,7 @@ const ordenarPrecoMaiorAoMenor = () =>{
     <button onClick={ordenarZA}>ZA</button>
     <button onClick={ordenarPrecoMenorAoMaior}>Menor ao maior</button>
     <button onClick={ordenarPrecoMaiorAoMenor}>Maior ao menor</button>
+    <input type="text" value={pesquisa} placeholder="Pesquise o produto" onChange={(event) => pesquisaTitulo( event.target.value)}/>
     <main className={styles.main}>
      {listaProduto.map((produto)=>
           <div className={styles.card} key={produto.id}>
