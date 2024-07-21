@@ -27,18 +27,26 @@ export default function Home() {
     };
     getProduto();
   }, []);
-//função para ordenar os produtos em ordem alfabética
-const ordernarAZ = () =>{
 
-  //essa const ta fazendo uma cópia da lista de produtos, e ela ta usando usando o metódo sort para ordenar
+const ordenarAZ = () =>{
+
+
   const newList = [...listaProduto].sort( (a, b) =>
-    //localeCompare é um método de string que compara duas strings em ordem alfabética, de acordo com as regras de localização.  
+   
     a.titulo.localeCompare(b.titulo)
   );
-  //depois o estado de listProduct vai ser alterado, afim de receber o que está armazenado dentro de newList
+ 
   setListaProduto(newList);
 }
 
+
+const ordenarZA = () =>{
+  let newList = [...listaProduto].sort( (a, b) =>
+      a.titulo.localeCompare(b.titulo)
+  );
+  newList = newList.reverse();
+  setListaProduto(newList);
+}
   if(erroNoServidor == true){
     return <ErronoFetch/>
   }
@@ -55,7 +63,8 @@ const ordernarAZ = () =>{
     </div>
     <br/>
     <p>Filtros: </p>
-    <button onClick={ordernarAZ}>AZ</button>
+    <button onClick={ordenarAZ}>AZ</button>
+    <button onClick={ordenarZA}>ZA</button>
     <main className={styles.main}>
      {listaProduto.map((produto)=>
           <div className={styles.card} key={produto.id}>
