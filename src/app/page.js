@@ -89,12 +89,16 @@ const pesquisaTitulo = (text) =>{
               src="/Banner.png"/>
     </div>
     <br/>
-    <p>Filtros: </p>
-    <button onClick={ordenarAZ}>AZ</button>
-    <button onClick={ordenarZA}>ZA</button>
-    <button onClick={ordenarPrecoMenorAoMaior}>Menor ao maior</button>
-    <button onClick={ordenarPrecoMaiorAoMenor}>Maior ao menor</button>
+    <div className={styles.filtrosContainer}>
+      <p> Filtros: </p>
+    <button onClick={ordenarAZ}>Do A ao Z</button>
+    <button onClick={ordenarZA}>Do Z ao A</button>
+    <button onClick={ordenarPrecoMenorAoMaior}>Menor preço ao maior</button>
+    <button onClick={ordenarPrecoMaiorAoMenor}>Maior preço ao menor</button>
+    <p>Pesquisa: </p>
     <input type="text" value={pesquisa} placeholder="Pesquise o produto" onChange={(event) => pesquisaTitulo( event.target.value)}/>
+    </div>
+    
     <main className={styles.main}>
      {listaProduto.map((produto)=>
           <div className={styles.card} key={produto.id}>
@@ -107,7 +111,12 @@ const pesquisaTitulo = (text) =>{
             <center><p><strong>Gênero: </strong>{produto.genero}</p></center>
             <center><p><strong>Tamanho: </strong>{produto.tamanho}</p></center> 
         <br/>
-        <Link href={"/produto/" + produto.id}>Ver mais!</Link>
+        <button className={styles.buttonLink}>
+        <Link className={styles.link} href={"/produto/" + produto.id}>
+                <p className={styles.buttonLinkText}>Ver mais!</p>
+            </Link>
+        </button>
+       
           </div>
    )}
     </main>

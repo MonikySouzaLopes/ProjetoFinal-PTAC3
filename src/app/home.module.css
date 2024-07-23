@@ -12,7 +12,7 @@
 
 .card{
     width: 500px;
-    height: 570px;
+    height: 595px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,4 +20,71 @@
     background-color: rgb(196, 196, 196);
 }
 
+/* botao.module.css */
+.buttonLink {
+    display: inline-block;
+    padding: 1px 10px;
+    background-color: rgb(115, 115, 115); /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+}
+
+.buttonLink:hover {
+    background-color: #5c5b5b; /* Cor de fundo do botão ao passar o mouse */
+}
+
+/* Estiliza o texto dentro do link */
+.buttonLinkText {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: #fff; /* Herda a cor do texto do botão */
+}
+
+.link{
+    text-decoration: none;
+}
+
+/* filtro.module.css */
+.filtrosContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filtrosContainer p {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.filtrosContainer button {
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: rgb(115, 115, 115);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.filtrosContainer button:hover {
+    background-color: #5c5b5b;
+}
+
+.filtrosContainer input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.filtrosContainer input[type="text"]::placeholder {
+    color: #aaa;
+}
 
