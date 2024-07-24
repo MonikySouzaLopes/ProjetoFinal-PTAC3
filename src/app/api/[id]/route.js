@@ -1,3 +1,4 @@
+//página dinâmica da API
 import { NextResponse } from "next/server";
 import { listaDeRoupas } from "../route";
 
